@@ -1,9 +1,11 @@
+#!/usr/bin/env python3
+
 import unittest
 from time_calculator import add_time
 
-
 class UnitTests(unittest.TestCase):
     maxDiff = None
+
     def test_same_period(self):
         actual = add_time("3:30 PM", "2:12")
         expected = "5:42 PM"
@@ -64,5 +66,5 @@ class UnitTests(unittest.TestCase):
         expected = "6:18 AM, Monday (20 days later)"
         self.assertEqual(actual, expected, 'Expected calling "add_time()" with "8:16 PM", "466:02", "tuesday" to return "6:18 AM, Monday (20 days later)"')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
