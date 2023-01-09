@@ -22,25 +22,43 @@ def add_time(start, duration, day_of_week=''):
     if time[1] >= 60:
         time[1] -= 60
 
-        if time[0] == 11 and period == pm:
-            days += 1
-            period = am
+        if time[0] == 11:
+            if period == am:
+                period = pm
+            elif period == pm:
+                period = am
+                days += 1
 
         time[0] += 1
 
     days += add[0] // 24
     add[0] -= (add[0] // 24) * 24
-    remaining = 12 - time[0]
 
-    if period == am:
-        if add[0] < 12 and add[0] < remaining:
-            time[0] += add[0]
-        elif add[0] >= remaining and add[0] < (24 - time[0]):
-            time[0] =  add[0] - remaining
-            period = pm
-        elif add[0] >= (24-time[0]):
-            time[0] = add[0] - (remaining + 12)
+    if time[0] == 12:
+        remaining = 12
+    else:
+        remaining = 12 - time[0]
+
+    if add[0] < 12 and add[0] < remaining:
+        time[0] += add[0]
+    else:
+        if period == am:
+            if add[0] >= remaining and add[0] < (remaining + 12):
+                time[0] = add[0] - remaining
+                period = pm
+            elif add[0] >= (24-time[0]):
+                time[0] = add[0] - (remaining + 12)
+                days += 1
+        elif period == pm:
             days += 1
+            if add[0] >= remaining and add[0] < (remaining + 12):
+                time[0] = add[0] - remaining
+                period = am
+            elif add[0] >= (24-time[0]):
+                time[0] = add[0] - (remaining + 12)
+
+    if time[0] > 12:
+        time[0] -= 12
 
     new_time = ''
 
