@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-
-def add_time(start, duration, day_of_week=''):
+def add_time(start, duration, day_of_week=str()):
     am, pm= 'AM', 'PM'
 
     days_of_week = (
@@ -13,9 +11,9 @@ def add_time(start, duration, day_of_week=''):
         'saturday'
     )
 
-    days = 0
-    later = ''
-    new_time = ''
+    days = int()
+    later = str()
+    new_time = str()
     
     period = start.split()[1]
     time = [int(i) for i in start.split()[0].split(':')]
@@ -50,7 +48,7 @@ def add_time(start, duration, day_of_week=''):
             if add[0] >= remaining and add[0] < (remaining + 12):
                 time[0] = add[0] - remaining
                 period = pm
-            elif add[0] >= (24-time[0]):
+            elif add[0] >= (24 - time[0]):
                 time[0] = add[0] - (remaining + 12)
                 days += 1
         elif period == pm:
@@ -58,7 +56,7 @@ def add_time(start, duration, day_of_week=''):
             if add[0] >= remaining and add[0] < (remaining + 12):
                 time[0] = add[0] - remaining
                 period = am
-            elif add[0] >= (24-time[0]):
+            elif add[0] >= (24 - time[0]):
                 time[0] = add[0] - (remaining + 12)
 
     if time[0] > 12:

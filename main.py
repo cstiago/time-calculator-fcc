@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from time_calculator import add_time
 from unittest import main
 
