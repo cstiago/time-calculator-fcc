@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def add_time(start, duration, day_of_week=''):
+def add_time(start, duration, day_of_week=str()):
     am, pm= 'AM', 'PM'
 
     days_of_week = (
@@ -13,9 +13,9 @@ def add_time(start, duration, day_of_week=''):
         'saturday'
     )
 
-    days = 0
-    later = ''
-    new_time = ''
+    days = int()
+    later = str()
+    new_time = str()
     
     period = start.split()[1]
     time = [int(i) for i in start.split()[0].split(':')]
