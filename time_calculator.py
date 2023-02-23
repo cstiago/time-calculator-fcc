@@ -48,7 +48,7 @@ def add_time(start, duration, day_of_week=str()):
             if add[0] >= remaining and add[0] < (remaining + 12):
                 time[0] = add[0] - remaining
                 period = pm
-            elif add[0] >= (24-time[0]):
+            elif add[0] >= (24 - time[0]):
                 time[0] = add[0] - (remaining + 12)
                 days += 1
         elif period == pm:
@@ -56,7 +56,7 @@ def add_time(start, duration, day_of_week=str()):
             if add[0] >= remaining and add[0] < (remaining + 12):
                 time[0] = add[0] - remaining
                 period = am
-            elif add[0] >= (24-time[0]):
+            elif add[0] >= (24 - time[0]):
                 time[0] = add[0] - (remaining + 12)
 
     if time[0] > 12:
