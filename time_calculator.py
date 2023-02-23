@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 def add_time(start, duration, day_of_week=str()):
     am, pm= 'AM', 'PM'
 
